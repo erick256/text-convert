@@ -26,6 +26,16 @@ public:
 
 private:
 	const std::string fileName;
+
+	const std::ofstream oFile;
+	const std::ofstream iFile;
+};
+
+enum Intent
+{
+	WRITE;
+	READ;
+	APPEND;
 };
 
 #endif
