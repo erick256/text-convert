@@ -10,6 +10,7 @@ int Menu::promptMainMenu()
 	const std::string menuMessage = "Choose an option to begin";
 	const int length2 = menuMessage.length();
 
+// Construct menu title
 	for(int x = 0; x != length; x++)
 	{
 		std::cout << "*";
@@ -23,6 +24,7 @@ int Menu::promptMainMenu()
 		std::cout << "*";
 	}
 
+// Construct menu message
 	std::cout << std::endl;
 	std::cout << std::endl;
 
@@ -32,8 +34,9 @@ int Menu::promptMainMenu()
 	{
 		std::cout << "-";
 	}
-
 	std::cout << std::endl;
+
+// Construct menu options
 
 	std::cout << "1. Create new entry" << std::endl;
 	std::cout << "2. Decrypt entry" << std::endl;

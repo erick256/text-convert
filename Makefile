@@ -1,5 +1,6 @@
-debug: TMain.o Menu.o ASCII.o
-	g++ TMain.o Menu.o ASCII.o -o debug
+debug: TMain.o Menu.o ASCII.o FileHandler.o
+	g++ TMain.o Menu.o ASCII.o FileHandler.o -o debug
+	rm *.o
 
 TMain.o:
 	g++ -c TMain.cpp
@@ -9,6 +10,9 @@ MainMenu.o:
 
 ASCII.o:
 	g++ -c ASCII.cpp
+
+FileHandler.o:
+	g++ -c FileHandler.cpp
 
 
 clean:
