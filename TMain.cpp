@@ -3,7 +3,7 @@
 
 int main()
 {
-	Menu menu;
+	/*Menu menu;
 
 	int choice = menu.promptMainMenu();
 
@@ -20,5 +20,11 @@ int main()
 	else
 	{
 		std::cout << "Terminating program..." << std::endl;
-	}
+	}*/
+
+	 
+	/*TODO
+		Finish FileHandler.cpp and .h
+	*/
+
 }
