@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <string>
+#include <iostream>
 
 enum Intent
 {
@@ -16,17 +17,27 @@ class FileHandler
 private:
 	std::string fileName;
 
-	std::ofstream outFile;
-	std::ifstream inFile;
+	std::ofstream oFile;
+	std::ifstream iFile;
+
 
 public:
 
 	FileHandler(std::string, Intent);
+	void closeFile();
 
-	void createFile(std::string);
-	void getFileName();
+	std::string getFileName();
 
-	void writeToFile(std::string);
+	/* 
+		void append() will be the only way to input data into a file
+	*/
+	void append(int);
+	void append(std::string);
+	void append(char);
+
+	std::string read();
+
+
 };
 
 #endif

@@ -4,41 +4,81 @@ FileHandler::FileHandler(std::string fileName_, Intent i)
 {
 	fileName = fileName_;
 
-	if(i == WRITE)
+	if(i == WRITE)	// Will overwrite any previous data in file, use APPEND to add data at end of file.
 	{
-		inFile.open(fileName, std::ifstream::in);
+		oFile.open(fileName);
 	}
 
 	else if(i == READ)
 	{
-		outFile.open(fileName, 
-			std::ofstream::out | std::ofstream::app);
+		iFile.open(fileName, 
+			std::ofstream::out | std::ofstream::in);
 	}
 
-	else if(i == APPEND)
+	else if(i == APPEND)	
 	{
-		inFile.open(fileName, std::ifstream::in);
-	}
-
-	else
-	{
-		// Throw error
+		oFile.open(fileName, std::ifstream::app);
 	}
 }
 
-void FileHandler::createFile(std::string fileName)
+void FileHandler::closeFile()
 {
-	std::ofstream file(fileName);
-	file.open();
-	file.close();
+	oFile.close();
 }
 
-void FileHandler::getFileName()
+std::string FileHandler::getFileName()
 {
 	return fileName;
 }
 
-void FileHandler::writeLine(std::string data)
+void FileHandler::append(int data)
 {
-	iFile << data << std::endl;
+	if (oFile.is_open())
+	{
+		oFile << data;
+	}
+
+	else
+	{
+		std::cout << "ERROR: The file " << fileName << " is not open!" << std::endl;
+	}
+}
+
+void FileHandler::append(std::string data)
+{
+	if (oFile.is_open())
+	{
+		oFile << data;
+	}
+
+	else
+	{
+		std::cout << "ERROR: The file " << fileName << " is not open!" << std::endl;
+	}
+}
+
+void FileHandler::append(char data)
+{
+	if (oFile.is_open())
+	{
+		oFile << data;
+	}
+
+	else
+	{
+		std::cout << "ERROR: The file " << fileName << " is not open!" << std::endl;
+	}
+}
+
+std::string FileHandler::read()
+{
+	if (iFile.is_open())
+	{
+		// TODO: Finish design for read
+	}
+
+	else
+	{
+		std::cout << "ERROR: The file " << fileName << " is not open!" << std::endl;
+	}
 }

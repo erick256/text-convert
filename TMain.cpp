@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "ASCII.h"
+#include "FileHandler.h"
 
 int main()
 {
@@ -26,5 +27,9 @@ int main()
 	/*TODO
 		Finish FileHandler.cpp and .h
 	*/
+
+	FileHandler file("testen.txt", WRITE);
+
+	file.closeFile();
 
 }
