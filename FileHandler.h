@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <vector>
 
 enum Intent
 {
@@ -16,6 +17,7 @@ class FileHandler
 {
 private:
 	std::string fileName;
+	std::vector<std::string> dataBuffer;
 
 	std::ofstream oFile;
 	std::ifstream iFile;
@@ -34,6 +36,10 @@ public:
 	void append(int);
 	void append(std::string);
 	void append(char);
+
+	void appendLine(int);
+	void appendLine(std::string);
+	void appendLine(char);
 
 	std::string read();
 

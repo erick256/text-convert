@@ -7,17 +7,20 @@ FileHandler::FileHandler(std::string fileName_, Intent i)
 	if(i == WRITE)	// Will overwrite any previous data in file, use APPEND to add data at end of file.
 	{
 		oFile.open(fileName);
+		std::cout << fileName << " is in WRITE mode" << std::endl;
 	}
 
 	else if(i == READ)
 	{
 		iFile.open(fileName, 
-			std::ofstream::out | std::ofstream::in);
+			std::ifstream::out | std::ofstream::in);
+		std::cout << fileName << " is in READ mode" << std::endl;
 	}
 
 	else if(i == APPEND)	
 	{
-		oFile.open(fileName, std::ifstream::app);
+		oFile.open(fileName, std::ofstream::app);
+		std::cout << fileName << " is in APPEND mode" << std::endl;
 	}
 }
 
@@ -40,7 +43,7 @@ void FileHandler::append(int data)
 
 	else
 	{
-		std::cout << "ERROR: The file " << fileName << " is not open!" << std::endl;
+		std::cout << "ERROR: The file, " << fileName << ", is not open!" << std::endl;
 	}
 }
 
@@ -53,7 +56,7 @@ void FileHandler::append(std::string data)
 
 	else
 	{
-		std::cout << "ERROR: The file " << fileName << " is not open!" << std::endl;
+		std::cout << "ERROR: The file, " << fileName << ", is not open!" << std::endl;
 	}
 }
 
@@ -66,19 +69,24 @@ void FileHandler::append(char data)
 
 	else
 	{
-		std::cout << "ERROR: The file " << fileName << " is not open!" << std::endl;
+		std::cout << "ERROR: The file, " << fileName << ", is not open!" << std::endl;
 	}
 }
 
-std::string FileHandler::read()
+std::string FileHandler::readLine()	// std::getline moves onto the next
+									// ln without the use of for loops
 {
+	std::string data = "";
+
 	if (iFile.is_open())
 	{
-		// TODO: Finish design for read
+		std::getline(iFile, data);
+		return data;
 	}
 
 	else
 	{
 		std::cout << "ERROR: The file " << fileName << " is not open!" << std::endl;
+		return data;
 	}
 }
