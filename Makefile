@@ -3,16 +3,16 @@ debug: TMain.o Menu.o ASCII.o FileHandler.o
 	rm *.o
 
 TMain.o:
-	g++ -c TMain.cpp
+	g++ -c TMain.cpp -std=c++11
 
 MainMenu.o:
-	g++ -c Menu.cpp
+	g++ -c Menu.cpp -std=c++11
 
 ASCII.o:
-	g++ -c ASCII.cpp
+	g++ -c ASCII.cpp -std=c++11
 
 FileHandler.o:
-	g++ -c FileHandler.cpp
+	g++ -c FileHandler.cpp -std=c++11
 
 
 clean:

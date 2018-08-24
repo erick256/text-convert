@@ -2,34 +2,35 @@
 #include "ASCII.h"
 #include "FileHandler.h"
 
+void test();
+void asciiTest();
+
 int main()
 {
-	/*Menu menu;
+	toASCII();
+}
 
-	int choice = menu.promptMainMenu();
+void test()
+{
+}
 
-	if(choice == 1)
-	{
-		
-	}
+void toASCII()
+{
+		std::string message;
+		std::getline(std::cin, message);
 
-	else if(choice == 2)
-	{
+		ASCII code(message);
 
-	}
+		for(int x = 0; x != code.getElementSize(); x++)
+		{
+			int c = code.getElement(x);
+			std::cout << c << " ";
+		}	
 
-	else
-	{
-		std::cout << "Terminating program..." << std::endl;
-	}*/
+	std::cout << std::endl;
+}
 
-	 
-	/*TODO
-		Finish FileHandler.cpp and .h
-	*/
-
-	FileHandler file("testen.txt", WRITE);
-
-	file.closeFile();
+void concatenateInt(int interval, int data)	//	das interval = wie viel soll den nummer sein
+{
 
 }

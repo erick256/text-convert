@@ -10,15 +10,17 @@ class ASCII
 {
 public:
 	ASCII(std::string);
-	ASCII(std::ofstream);
 	
 	int getElementSize();
 	int getElement(int);
 
 	char toChar(int);
 
+	void test();
+
 private:
 	std::vector<int> buffer;
+	std::string data;
 };
 
 

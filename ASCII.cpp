@@ -8,7 +8,7 @@ ASCII::ASCII(std::string s)
 		int ascii = c;
 
 		buffer.push_back(ascii);
-	}
+	}	
 }
 
 int ASCII::getElement(int element)

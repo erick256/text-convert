@@ -41,9 +41,8 @@ public:
 	void appendLine(std::string);
 	void appendLine(char);
 
-	std::string read();
-
-
+	std::vector<std::string> read();
+	std::string readLine();
 };
 
 #endif
