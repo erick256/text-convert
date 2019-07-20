@@ -90,13 +90,3 @@ std::string FileHandler::readLine()	// std::getline moves onto the next
 		return data;
 	}
 }
-
-std::vector<std::string> FileHandler::read()
-{
-	//test
-
-	for(int x = 0; x != 10; x++)
-	{
-		
-	}
-}
