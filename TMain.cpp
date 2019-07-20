@@ -4,6 +4,7 @@
 
 void test();
 void asciiTest();
+void toASCII();
 
 int main()
 {
