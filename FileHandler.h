@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 
-enum Intent
+enum Mode
 {
 	WRITE,
 	READ,
@@ -21,11 +21,12 @@ private:
 
 	std::ofstream oFile;
 	std::ifstream iFile;
+    std::fstream file;
 
 
 public:
 
-	FileHandler(std::string, Intent);
+	FileHandler(std::string, Mode);
 	void closeFile();
 
 	std::string getFileName();
