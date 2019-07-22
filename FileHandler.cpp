@@ -1,6 +1,6 @@
 #include "FileHandler.h"
 
-FileHandler::FileHandler(std::string fileName_, Intent i)
+FileHandler::FileHandler(std::string fileName_, Mode i)
 {
 	fileName = fileName_;
 
@@ -81,12 +81,12 @@ std::string FileHandler::readLine()	// std::getline moves onto the next
 	if (iFile.is_open())
 	{
 		std::getline(iFile, data);
-		return data;
 	}
 
 	else
 	{
-		std::cout << "ERROR: The file " << fileName << " is not open!" << std::endl;
-		return data;
+		std::cout << "ERROR: The file, " << fileName << ", is not open!" << std::endl;
 	}
+    
+    return data;
 }
