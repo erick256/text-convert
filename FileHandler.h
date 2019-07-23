@@ -21,7 +21,7 @@ private:
 
 	std::ofstream oFile;
 	std::ifstream iFile;
-    std::fstream file;
+    std::fstream stream;
 
 
 public:
@@ -30,6 +30,9 @@ public:
 	void closeFile();
 
 	std::string getFileName();
+    bool exists(std::ifstream);
+    bool exists(std::ofstream);
+    bool exists(std::fstream);
 
 	/* 
 		void append() will be the only way to input data into a file
@@ -42,8 +45,7 @@ public:
 	void appendLine(std::string);
 	void appendLine(char);
 
-	std::vector<std::string> read();
-	std::string readLine();
+	std::string read();
 };
 
 #endif
