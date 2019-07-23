@@ -3,25 +3,7 @@
 FileHandler::FileHandler(std::string fileName_, Mode i)
 {
 	fileName = fileName_;
-
-	if(i == WRITE)	// Will overwrite any previous data in file, use APPEND to add data at end of file.
-	{
-        oFile.open(fileName, std::ios::in);
-        std::cout << oFile.is_open() << std::endl;;
-		std::cout << fileName << " is in WRITE mode" << std::endl;
-	}
-
-	else if(i == READ)
-	{
-		iFile.open(fileName, std::ios::out);
-        std::cout << fileName << " is in READ mode" << std::endl;
-	}
-
-	else if(i == APPEND)	
-	{
-        iFile.open(fileName, std::ios::app);
-		std::cout << fileName << " is in APPEND mode" << std::endl;
-	}
+    iFile.open(fileName);
 }
 
 void FileHandler::closeFile()
@@ -73,14 +55,17 @@ void FileHandler::append(char data)
 	}
 }
 
-std::string FileHandler::readLine()	// std::getline moves onto the next
-									// ln without the use of for loops
+std::string FileHandler::read() // reads entire file into a single string variable
 {
 	std::string data = "";
+    std::string buffer;
 
 	if (iFile.is_open())
 	{
-		std::getline(iFile, data);
+        while(std::getline(iFile, buffer))
+        {
+            data += buffer;
+        }
 	}
 
 	else
