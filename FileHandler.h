@@ -46,6 +46,7 @@ public:
 	void appendLine(char);
 
 	std::string read();
+    std::string readLine(unsigned int);
 };
 
 #endif
