@@ -1,29 +1,68 @@
 #include "ASCII.h"
 
-ASCII::ASCII(std::string s)
+ASCII::ASCII(std::string fileName_)
 {
-	for(int x = 0; x < s.length(); x++)
-	{
-		char c = s[x];
-		int ascii = c;
-
-		buffer.push_back(ascii);
-	}	
+    fileName = fileName_;
 }
 
-int ASCII::getElement(int element)
+bool ASCII::convert()
 {
-	return buffer[element];
+    bool taskCompleted = false;
+    
+    if(isConverted())
+    {
+        std::cout << "File is already converted to ASCII." << std::endl;
+    }
+    else
+    {
+        FileHandler file1(fileName, READ);
+        std::string fileData = file1.read();
+        file1.closeFile();
+        
+        FileHandler file2(fileName, WRITE); // deletes the contents of the file
+        file2.closeFile();
+        
+        std::string buffer = "";
+        
+        for(char c : fileData)
+        {
+            int character = c;
+            std::string number = std::to_string(character);
+            buffer += number;
+        }
+        
+        FileHandler file3(fileName, APPEND);
+        file3.appendLine("100111110101"); // this is ascii code for "done", further converting won't be possible after the first time since the constructor looks for this line in the file before converting
+        file3.append(buffer);
+        file3.closeFile();
+        
+        taskCompleted = true;
+    }
+    
+    return taskCompleted;
 }
 
-int ASCII::getElementSize()
+bool ASCII::isConverted()
 {
-	return buffer.size();
+    bool isConverted = false;
+    
+    FileHandler file(fileName, READ);
+    std::string lineData = file.readLine(1);
+    file.closeFile();
+    
+    if(lineData == "100111110101")
+    {
+        isConverted = true;
+    }
+    
+    return isConverted;
 }
 
-char ASCII::toChar(int value)
+bool ASCII::revert()
 {
-	char c = value;
-
-	return c;
+    bool taskCompleted = false;
+    
+    
+    
+    return taskCompleted;
 }
