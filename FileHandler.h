@@ -17,33 +17,25 @@ class FileHandler
 {
 private:
 	std::string fileName;
-	std::vector<std::string> dataBuffer;
 
 	std::ofstream oFile;
 	std::ifstream iFile;
-    std::fstream stream;
+    
+    Mode mode;
 
 
 public:
 
 	FileHandler(std::string, Mode);
+    bool exists();
 	void closeFile();
 
 	std::string getFileName();
-    bool exists(std::ifstream);
-    bool exists(std::ofstream);
-    bool exists(std::fstream);
+    
+    bool write(std::string);
 
-	/* 
-		void append() will be the only way to input data into a file
-	*/
-	void append(int);
-	void append(std::string);
-	void append(char);
-
-	void appendLine(int);
-	void appendLine(std::string);
-	void appendLine(char);
+	bool append(std::string);
+	bool appendLine(std::string);
 
 	std::string read();
     std::string readLine(unsigned int);
