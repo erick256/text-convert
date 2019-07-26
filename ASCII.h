@@ -16,11 +16,15 @@ public:
     bool isConverted();
     
     bool revert();
+    bool isReverted();
 
 private:
     std::string fileName;
 	std::vector<int> buffer;
 	std::string data;
+    
+    std::string convertedSignal;
+    std::string revertedSignal;
 };
 
 

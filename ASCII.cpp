@@ -26,13 +26,12 @@ bool ASCII::convert()
         
         for(char c : fileData)
         {
-            int character = c;
-            std::string number = std::to_string(character);
-            buffer += number;
+                int character = c;
+                std::string number = std::to_string(character);
+                buffer += number + " ";
         }
         
         FileHandler file3(fileName, APPEND);
-        file3.appendLine("100111110101"); // this is ascii code for "done", further converting won't be possible after the first time since the constructor looks for this line in the file before converting
         file3.append(buffer);
         file3.closeFile();
         
@@ -50,10 +49,7 @@ bool ASCII::isConverted()
     std::string lineData = file.readLine(1);
     file.closeFile();
     
-    if(lineData == "100111110101")
-    {
-        isConverted = true;
-    }
+    
     
     return isConverted;
 }
@@ -62,6 +58,35 @@ bool ASCII::revert()
 {
     bool taskCompleted = false;
     
+    FileHandler file1(fileName, READ);
+    std::string data = file1.read();
+    file1.closeFile();
+    
+    std::string bufferedLetter = "";
+    std::string bufferedFile = "";
+    
+    for(char c : data)
+    {
+        if(c != (char) 32)
+        {
+            bufferedLetter += c;
+        }
+        
+        else
+        {
+            int charNumber = std::stoi(bufferedLetter);
+            char letter = charNumber;
+            bufferedFile += letter;
+            bufferedLetter = "";
+        }
+    }
+    
+    FileHandler file2(fileName, WRITE);
+    file2.closeFile();
+    
+    FileHandler file3(fileName, APPEND);
+    file3.append(bufferedFile);
+    file3.closeFile();
     
     
     return taskCompleted;
