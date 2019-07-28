@@ -1,6 +1,8 @@
 #include "Menu.h"
 #include "ASCII.h"
 #include "FileHandler.h"
+#include <fstream>
+#include <numeric>
 
 void test();
 void asciiTest();
@@ -8,30 +10,11 @@ void toASCII();
 
 int main()
 {
-	toASCII();
-}
-
-void test()
-{
-}
-
-void toASCII()
-{
-		std::string message;
-		std::getline(std::cin, message);
-
-		ASCII code(message);
-
-		for(int x = 0; x != code.getElementSize(); x++)
-		{
-			int c = code.getElement(x);
-			std::cout << c << " ";
-		}	
-
-	std::cout << std::endl;
-}
-
-void concatenateInt(int interval, int data)	//	das interval = wie viel soll den nummer sein
-{
-
+    // example code to turn text into ASCII
+    ASCII file("test.txt");
+    file.convert();
+    
+    // converts ASCII back to text
+    // WARNING: using revert() again after a file has been already been converted from ASCII to normal text will wipe the data
+    file.revert();
 }
