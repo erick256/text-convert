@@ -6,18 +6,15 @@ FileHandler::FileHandler(std::string fileName_, Mode mode_)
     mode = mode_;
     if(mode == READ)
     {
-        std::cout << "The file, " << fileName << ", is in READ mode!" << std::endl;
         iFile.open(fileName);
     }
     else if(mode == WRITE)
     {
-        std::cout << fileName << " is in WRITE mode!" << std::endl;
         oFile.open(fileName);
     }
     
     else
     {
-        std::cout << fileName << " is in APPEND mode!" << std::endl;
         oFile.open(fileName, std::ios::app);
     }
 }
@@ -123,7 +120,7 @@ bool FileHandler::appendLine(std::string input)
     return taskComplete;
 }
 
-std::string FileHandler::read() // reads entire file into a single string variable
+std::string FileHandler::read() // reads entire file into a single string variable, not consistent when used more than once, will replace
 {
 	std::string data = "";
     std::string buffer;
@@ -135,7 +132,7 @@ std::string FileHandler::read() // reads entire file into a single string variab
             data += buffer;
         }
 	}
-
+    
 	else
 	{
 		std::cout << "ERROR: The file, " << fileName << ", is not in READ mode!" << std::endl;
@@ -144,7 +141,7 @@ std::string FileHandler::read() // reads entire file into a single string variab
     return data;
 }
 
-std::string FileHandler::readLine(unsigned int line) // line starts at 1
+std::string FileHandler::readLine(unsigned int line) // reads a specific line
 {
     std::string buffer;
     std::string lineData = "";
